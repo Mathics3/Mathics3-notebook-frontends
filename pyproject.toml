@@ -1,0 +1,25 @@
+[build-system]
+requires = [
+    "setuptools>=70.0.0", # CVE-2024-38335 recommends this
+    "packaging",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+description = "Notebook integration for Mathics3"
+dependencies = [
+    "Mathics3 >= 7.0.0",
+    "setuptools",
+]
+license = {text = "GPL"}
+name = "Mathics3-notebook-frontends"
+maintainers = [
+    {name = "Mathics Group", email = "mathics-devel@googlegroups.com"},
+]
+version = "0.1.0"
+
+[project.urls]
+Homepage = "https://mathics.org/"
+
+[tool.setuptools.packages.find]
+include = ["mathics.frontend"]
