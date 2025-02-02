@@ -22,4 +22,4 @@ version = "0.1.0"
 Homepage = "https://mathics.org/"
 
 [tool.setuptools.packages.find]
-include = ["mathics.frontend"]
+include = ["mathics3_kernel.frontend"]
