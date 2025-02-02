@@ -26,7 +26,11 @@ Then run Mathics3 code like so:
 mathics3("ArcCos[0]")
 ```
 
-See the examples directory for a sample notebook.
+See the examples directory for a sample notebook:
+
+```sh
+marimo edit --sandbox examples/marimo_notebook.py
+```
 
 ## Observable
 

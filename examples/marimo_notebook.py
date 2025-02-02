@@ -1,3 +1,15 @@
+# /// script
+# requires-python = ">=3.12"
+# dependencies = [
+#     "marimo",
+#     "mathics3-notebook-frontends",
+#     "mathics3[full]",
+#     "pymathics-graph",
+# ]
+#
+# [tool.uv.sources]
+# mathics3-notebook-frontends = { git = "https://github.com/Mathics3/Mathics3-notebook-frontends.git" }
+# ///
 import marimo
 
 __generated_with = "0.10.19"
