@@ -3,7 +3,7 @@
 This library provides helper functions for integrating Mathics3 into notebook environments.
 Currently, it supports Jupyter(Lite), marimo, and Observable.
 
-## Jupyter(Lite)
+## Jupyter and JupyterLite
 
 See the [Mathics3 live](https://github.com/Mathics3/Mathics3-live) project for a live demo.
 
@@ -13,6 +13,8 @@ See the [Mathics3 live](https://github.com/Mathics3/Mathics3-live) project for a
 
 Usage is as simple as executing the above code in a notebook cell,
 and then Mathics3 code can be directly run in all subsequent cells.
+Here is a [sample notebook](examples/jupyter-notebook.ipynb)
+that can be used with a local Jupyter installation.
 
 ## marimo
 
