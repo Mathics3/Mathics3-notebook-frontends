@@ -32,6 +32,8 @@ See the examples directory for a sample notebook:
 marimo edit --sandbox examples/marimo_notebook.py
 ```
 
+It also works in marimo's pyodide-powered online environment, see https://marimo.io/p/@davidar/mathics for an example.
+
 ## Observable
 
 For other notebook environments, this library provides a generic interface:
