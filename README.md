@@ -1,12 +1,18 @@
-# Mathics3 notebook frontends
+# Mathics3 Module for notebook frontends
 
 This library provides helper functions for integrating Mathics3 into notebook environments.
 Currently, it supports Jupyter(Lite), marimo, and Observable.
 
-## Jupyter and JupyterLite
+## JupyterLite
 
-See the [Mathics3 live](https://github.com/Mathics3/Mathics3-live) project for a live demo.
+See [Mathics3 live](https://github.com/Mathics3/Mathics3-live) project a project that
+uses this Python module in a live demo running under pyodidie.
 
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
 ```
 %load_ext mathics3_kernel.frontend.jupyter
 ```

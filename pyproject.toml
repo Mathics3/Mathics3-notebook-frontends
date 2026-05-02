@@ -1,25 +1,53 @@
 [build-system]
 requires = [
-    "setuptools>=70.0.0", # CVE-2024-38335 recommends this
+    "setuptools>=80", # CVE-2024-38335 and later CVE's recommend this
+    "wheel",
     "packaging",
 ]
 build-backend = "setuptools.build_meta"
 
 [project]
-description = "Notebook integration for Mathics3"
+description = "Jupyter, JupyterLite, marimo, Observable Notebook integration for Mathics3"
 dependencies = [
-    "Mathics3 >= 7.0.0",
+    "Mathics3 >= 10.0.0",
     "setuptools",
+    # The following is needed because latest versions of "chardet" (6.0
+    # and above) are not supported with some versions of "requests". I
+    # think the main important version restriction below is chardet<6.0.0
+    # chardet 6+ and above is not compatible with "requests" (et. al?)
+    "requests>=2.32.3",
+    "urllib3>=1.21.1,< 3",
+    "chardet>=3.0.2,< 6.0.0",
+    "charset-normalizer>=2.0.0,< 4.0.0",
 ]
-license = {text = "GPL"}
-name = "Mathics3-notebook-frontends"
+license = "GPL-3.0-or-later"
+name = "mathics3_notebook_frontends"
+requires-python = ">=3.11"
 maintainers = [
-    {name = "Mathics Group", email = "mathics-devel@googlegroups.com"},
+    {name = "Mathics3 Group", email = "mathics-devel@googlegroups.com"},
 ]
-version = "0.1.0"
+classifiers = [
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Mathematics",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Topic :: Software Development :: Interpreters",
+]
+version = "1.0.0"
 
 [project.urls]
 Homepage = "https://mathics.org/"
+Downloads = "https://github.com/Mathics3/Mathics3-notebook-frontends/releases"
+
+[[tool.mypy.overrides]]
+ignore_missing_imports = true
 
 [tool.setuptools.packages.find]
 include = ["mathics3_kernel.frontend"]

@@ -5,9 +5,11 @@ from IPython.core.interactiveshell import InteractiveShell
 from IPython.core.magic import Magics, magics_class, line_cell_magic
 
 from mathics.session import MathicsSession
+from mathics.core.load_builtin import import_and_load_builtins
 
 from .format import Formatter
 
+import_and_load_builtins()
 
 class JupyterFormatter(Formatter):
     def text(self, result):
