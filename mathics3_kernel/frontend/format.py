@@ -1,10 +1,12 @@
-from typing import Callable
+from typing import Callable, Dict, Final
 
 from mathics.core.atoms import SymbolString
 from mathics.core.expression import BoxError, Expression
 from mathics.core.symbols import Symbol
 from mathics.core.systemsymbols import (
+    SymbolAborted,
     SymbolCompiledFunction,
+    SymbolFailed,
     SymbolFullForm,
     SymbolGraphics,
     SymbolGraphics3D,
@@ -16,17 +18,22 @@ from mathics.core.systemsymbols import (
 )
 from mathics.session import get_settings_value
 
-
-FORM_TO_FORMAT = {
-    "System`MathMLForm": "xml",
-    "System`TeXForm": "tex",
+# Maps a Form to a kind of html format.
+# text is the usual text-kind of output.
+# LaTeX is handled by MathJaX display mode $$ $$
+# MathML could be tagged differently too.
+FORM_TO_HTML_TAG_FORMAT: Final[Dict[str, str]] = {
     "System`FullForm": "text",
+    "System`InputForm": "text",
+    # "System`MathMLForm": "MathML",
     "System`OutputForm": "text",
+    "System`TeXForm": "LaTeX",
+    "System`String": "text",
 }
 
 
 class Formatter:
-    def format_output(self, evaluation, expr, format="unformatted"):
+    def format_output(self, evaluation, expr, html_tag_format: str = "unformatted"):
         """
         evaluation.py format_output() from which this was derived is similar but
         it can't make use of a front-ends specific capabilities.
@@ -47,10 +54,16 @@ class Formatter:
                     )
             return boxes
 
-        if isinstance(format, dict):
+        if isinstance(html_tag_format, dict):
             return dict(
-                (k, self.format_output(evaluation, expr, f)) for k, f in format.items()
+                (k, self.format_output(evaluation, expr, f))
+                for k, f in html_tag_format.items()
             )
+
+        if expr is SymbolAborted:
+            return "$Aborted"
+        elif expr is SymbolFailed:
+            return "$Failed"
 
         # For some expressions, we want formatting to be different.
         # In particular for FullForm output, we don't want MathML, we want
@@ -60,7 +73,7 @@ class Formatter:
         expr_head = expr.get_head()
         if expr_head in (SymbolMathMLForm, SymbolTeXForm):
             # For these forms, we strip off the outer "Form" part
-            format = FORM_TO_FORMAT[expr_type]
+            html_tag_format = FORM_TO_HTML_TAG_FORMAT[expr_type]
             elements = expr.get_elements()
             if len(elements) == 1:
                 expr = elements[0]
@@ -79,20 +92,20 @@ class Formatter:
             evaluation.definitions, "Settings`$QuotedStrings"
         )
 
-        if format == "text":
-            result = expr.format(evaluation, SymbolOutputForm)
-            result = eval_boxes(result, result.boxes_to_text, evaluation)
+        if html_tag_format == "text":
+            boxed = expr.format(evaluation, SymbolOutputForm)
+            result = eval_boxes(boxed, boxed.boxes_to_text, evaluation)
 
             if use_quotes:
                 result = '"' + result + '"'
 
             return self.text(result)
-        elif format == "xml":
+        elif html_tag_format == "xml":
             result = Expression(SymbolStandardForm, expr).format(
                 evaluation, SymbolMathMLForm
             )
             return self.html(eval_boxes(result, result.boxes_to_text, evaluation))
-        elif format == "tex":
+        elif html_tag_format == "tex":
             result = Expression(SymbolStandardForm, expr).format(
                 evaluation, SymbolTeXForm
             )
