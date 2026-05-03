@@ -38,6 +38,7 @@ class MathicsMagic(Magics):
     def __init__(self, shell):
         super().__init__(shell)
         self.session = MathicsSession()
+        import_and_load_builtins()
         self.formatter = JupyterFormatter()
 
     @line_cell_magic
