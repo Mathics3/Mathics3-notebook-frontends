@@ -41,6 +41,7 @@ classifiers = [
     "Topic :: Scientific/Engineering :: Physics",
     "Topic :: Software Development :: Interpreters",
 ]
+readme = "README.md"
 
 [project.urls]
 Homepage = "https://mathics.org/"
