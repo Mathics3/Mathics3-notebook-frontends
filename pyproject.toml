@@ -20,6 +20,7 @@ dependencies = [
     "chardet>=3.0.2,< 6.0.0",
     "charset-normalizer>=2.0.0,< 4.0.0",
 ]
+dynamic = ["version"]
 license = "GPL-3.0-or-later"
 name = "mathics3_notebook_frontends"
 requires-python = ">=3.11"
@@ -40,7 +41,6 @@ classifiers = [
     "Topic :: Scientific/Engineering :: Physics",
     "Topic :: Software Development :: Interpreters",
 ]
-version = "1.0.0"
 
 [project.urls]
 Homepage = "https://mathics.org/"
@@ -51,3 +51,6 @@ ignore_missing_imports = true
 
 [tool.setuptools.packages.find]
 include = ["mathics3_kernel.frontend"]
+
+[tool.setuptools.dynamic]
+version = {attr = "mathics3_kernel.frontend.version.__version__"}
