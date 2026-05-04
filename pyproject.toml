@@ -47,6 +47,13 @@ readme = "README.md"
 Homepage = "https://mathics.org/"
 Downloads = "https://github.com/Mathics3/Mathics3-notebook-frontends/releases"
 
+[project.optional-dependencies]
+dev = [
+    "check-jsonschema",
+    "pytest",
+    "pre-commit",
+]
+
 [[tool.mypy.overrides]]
 ignore_missing_imports = true
 
