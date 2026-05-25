@@ -49,7 +49,7 @@ After this, entering code in a Notebook cell will be interpreted as Mathics3 inp
 Here is a [sample notebook](examples/jupyter-notebook.ipynb)
 that can be used with a local Jupyter installation.
 
-For an already set up and no install version, running in a browser, see [Mathics3 Live](https://mathics.github.io/Mathics3-live/). The GitHub repository for this is at [https://github.com/Mathics3/Mathics3-live](https://github.com/Mathics3/Mathics3-live)
+For an already set up and no install version, running in a browser, see [Mathics3 Live](https://mathics3.github.io/Mathics3-live/). The GitHub repository for this is at [https://github.com/Mathics3/Mathics3-live](https://github.com/Mathics3/Mathics3-live)
 ## marimo
 
 ```py
