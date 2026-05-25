@@ -8,9 +8,6 @@ For Jupyter, see also the [Jupyter Kernel](http://github.com/Mathics3/Mathics3-f
 
 ## Jupyter and JupyterLite
 
-See [Mathics3 live](https://github.com/Mathics3/Mathics3-live) project a project that
-uses this Python module in a live demo running under pyodidie.
-
 Set up your Python environment:
 
 ```bash
@@ -42,7 +39,7 @@ You should see a URL to connect to:
 The URLS and file access will be different than the above. Also, remove any browser connections to the URLS, e.g., `localhost:8888` or `127.0.0.1:8888` or else you'll see errors.
 
 
-Inside a standard *Python* Jupyter Kernel, run:
+Inside a standard Python3 Jupyter Kernel (ipykernel), run:
 
 ```
 %load_ext mathics3_kernel.frontend.jupyter
@@ -52,6 +49,7 @@ After this, entering code in a Notebook cell will be interpreted as Mathics3 inp
 Here is a [sample notebook](examples/jupyter-notebook.ipynb)
 that can be used with a local Jupyter installation.
 
+For an already set up and no install version, running in a browser, see [Mathics3 Live](https://mathics3.github.io/Mathics3-live/). The GitHub repository for this is at [https://github.com/Mathics3/Mathics3-live](https://github.com/Mathics3/Mathics3-live) 
 ## marimo
 
 ```py
