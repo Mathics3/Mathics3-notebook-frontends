@@ -8,12 +8,12 @@ from mathics.session import MathicsSession
 
 from mathics3_kernel.frontend.markdown_mathics3 import MarkdownMathics3Magic
 
-from .format import Formatter
+from .markdown_mathics3 import MarkdownFormatter
 
 import_and_load_builtins()
 
 
-class JupyterFormatter(Formatter):
+class JupyterFormatter(MarkdownFormatter):
     def text(self, result):
         return Code(result, language="mathematica")
 
@@ -42,7 +42,7 @@ class Mathics3Magic(Magics):
         self.session = MathicsSession()
         import_and_load_builtins()
         self.formatter = JupyterFormatter()
-        self.markdown = MarkdownMathics3Magic(shell)
+        self.markdown = MarkdownMathics3Magic(shell, self.session)
 
     @line_cell_magic
     def mathics3(self, line, cell=""):

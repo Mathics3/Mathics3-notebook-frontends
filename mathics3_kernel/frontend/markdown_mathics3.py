@@ -18,9 +18,6 @@ class MarkdownFormatter(Formatter):
     def html(self, result):
         return result
 
-    def svg(self, result):
-        return result
-
     def graphics3d(self, result):
         return f"<script>drawGraphics3d(element, {result})</script>"
 
@@ -29,9 +26,10 @@ class MarkdownFormatter(Formatter):
 class MarkdownMathics3Magic(Magics):
     """Magic command for evaluating Mathics3 expressions within markdown cells."""
 
-    def __init__(self, shell):
+    def __init__(self, shell, session=None):
         self.formatter = MarkdownFormatter()
         self.shell = shell
+        self.session = session
 
     def evaluate_expression(self, expr_str: str) -> str:
         """Evaluate a single Mathics3 expression and return formatted result."""
@@ -44,20 +42,20 @@ class MarkdownMathics3Magic(Magics):
 
     def process_inline_expressions(self, text: str) -> str:
         """Replace inline expressions like `mathics|expr|` with results."""
-        # Pattern matches `mathics|...|` or `m|...|`
-        pattern = r"`(?:mathics|m)\|([^|]+)\|`"
+        # Pattern matches `mathics3|...|` or `m3|...|`
+        pattern = r"`(?:mathics3|m3)\|([^|]+)\|`"
 
         def replace_inline(match):
             expr_str = match.group(1).strip()
             result = self.evaluate_expression(expr_str)
-            return f"${result}$"  # Wrap in single $ for inline math
+            return f"{result}"  # Wrap in single $ for inline math
 
         return re.sub(pattern, replace_inline, text)
 
     def process_block_expressions(self, text: str) -> str:
-        """Replace block expressions like $$mathics ... $$ with results."""
-        # Pattern matches $$mathics ... $$ blocks
-        pattern = r"\$\$mathics\s*(.*?)\s*\$\$"
+        """Replace block expressions like $$mathics3 ... $$ with results."""
+        # Pattern matches $$mathics3 ... $$ blocks
+        pattern = r"\$\$mathics3\s*(.*?)\s*\$\$"
 
         def replace_block(match):
             expr_str = match.group(1).strip()
@@ -72,11 +70,11 @@ class MarkdownMathics3Magic(Magics):
         Magic command to process markdown with embedded Mathics3 expressions.
 
         Usage:
-            %%markdown_mathics3
-            This is a calculation: `mathics|2 + 2|` which equals 4.
+            %markdown_mathics3
+            This is a calculation: `m3|2 + 2|` which equals 4.
 
             Block calculation:
-            $$mathics
+            $$mathics3
             Integrate[x^2, x]
             $$
         """
