@@ -7,6 +7,8 @@
 .PHONY: all \
    ChangeLog-without-corrections \
    dist \
+   run-jupyter-notebook \
+   run-jupyter-console \
    rmChangeLog
 
 GIT2CL ?= admin-tools/git2cl
@@ -14,6 +16,14 @@ GIT2CL ?= admin-tools/git2cl
 #: Make distirbution: wheels and tarball
 dist:
 	./admin-tools/make-dist.sh
+
+#: Run a Jupyter notebook
+run-jupyter-notebook:
+	jupyter notebook
+
+#: Run a Jupyter console
+run-jupyter-console:
+	jupyter console
 
 #: Remove ChangeLog
 rmChangeLog:

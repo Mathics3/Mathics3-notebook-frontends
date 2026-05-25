@@ -1,24 +1,54 @@
-# Mathics3 Module for notebook frontends
+# Mathics3 Extension Module for notebook frontends
 
-This library provides helper functions for integrating Mathics3 into notebook environments.
-Currently, it supports Jupyter(Lite), marimo, and Observable.
+This library provides helper functions via Jupyter Exntension for integrating Mathics3 into notebook environments.
 
-## JupyterLite
+Currently, it supports Jupyter, JupyterLite, marimo, and Observable.
+
+For Jupyter, see also the Github repostitory for the [Jupyter Kernel](http://github.com/Mathics3/Mathics3-frontends-jupyter).
+
+## Jupyter and JupyterLite
 
 See [Mathics3 live](https://github.com/Mathics3/Mathics3-live) project a project that
 uses this Python module in a live demo running under pyodidie.
 
+Set up your Python environtment:
+
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
 ```
+
+or using `pyenv`:
+```bash
+pyenv local 3.14
+```
+
+Next, start jupyter notebook:
+
+```bash
+jupyter notebook # or make run-jupyter-notebook
+```
+
+You should see a URL to connect to:
+
+```
+    To access the server, open this file in a browser:
+        file:/usr/local/share/jupyter/runtime/jpserver-3279554-open.html
+    Or copy and paste one of these URLs:
+        http://localhost:8888/tree?token=1833fd2ac0fecd651c3f2d44931bd44c06673dd4701af3ca
+        http://127.0.0.1:8888/tree?token=1833fd2ac0fecd651c3f2d44931bd44c06673dd4701af3ca
+```
+
+The URLS and file access will be different than the above. Also remove any browser connnections to the URLS, e.g.`localhost:8888` or `127.0.0.1:8888` or else you'll see errors.
+
+
+Inside a standard *Python* Jupyter Kernel, run:
+
 ```
 %load_ext mathics3_kernel.frontend.jupyter
 ```
 
-Usage is as simple as executing the above code in a notebook cell,
-and then Mathics3 code can be directly run in all subsequent cells.
+After this entering code in a Notebook cell will be interpreted as Mathics3 input. ,
 Here is a [sample notebook](examples/jupyter-notebook.ipynb)
 that can be used with a local Jupyter installation.
 
