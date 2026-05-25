@@ -1,17 +1,17 @@
 # Mathics3 Extension Module for notebook frontends
 
-This library provides helper functions via Jupyter Exntension for integrating Mathics3 into notebook environments.
+This library provides helper functions via a Jupyter Extension to integrate Mathics3 into notebook environments.
 
 Currently, it supports Jupyter, JupyterLite, marimo, and Observable.
 
-For Jupyter, see also the Github repostitory for the [Jupyter Kernel](http://github.com/Mathics3/Mathics3-frontends-jupyter).
+For Jupyter, see also the [Jupyter Kernel](http://github.com/Mathics3/Mathics3-frontends-jupyter) GitHub repository.
 
 ## Jupyter and JupyterLite
 
 See [Mathics3 live](https://github.com/Mathics3/Mathics3-live) project a project that
 uses this Python module in a live demo running under pyodidie.
 
-Set up your Python environtment:
+Set up your Python environment:
 
 ```bash
 python3 -m venv .venv
@@ -23,7 +23,7 @@ or using `pyenv`:
 pyenv local 3.14
 ```
 
-Next, start jupyter notebook:
+Next, start Jupyter Notebook:
 
 ```bash
 jupyter notebook # or make run-jupyter-notebook
@@ -39,7 +39,7 @@ You should see a URL to connect to:
         http://127.0.0.1:8888/tree?token=1833fd2ac0fecd651c3f2d44931bd44c06673dd4701af3ca
 ```
 
-The URLS and file access will be different than the above. Also remove any browser connnections to the URLS, e.g.`localhost:8888` or `127.0.0.1:8888` or else you'll see errors.
+The URLS and file access will be different than the above. Also, remove any browser connections to the URLS, e.g., `localhost:8888` or `127.0.0.1:8888` or else you'll see errors.
 
 
 Inside a standard *Python* Jupyter Kernel, run:
@@ -48,7 +48,7 @@ Inside a standard *Python* Jupyter Kernel, run:
 %load_ext mathics3_kernel.frontend.jupyter
 ```
 
-After this entering code in a Notebook cell will be interpreted as Mathics3 input. ,
+After this, entering code in a Notebook cell will be interpreted as Mathics3 input. ,
 Here is a [sample notebook](examples/jupyter-notebook.ipynb)
 that can be used with a local Jupyter installation.
 
@@ -70,7 +70,7 @@ See the examples directory for a sample notebook:
 marimo edit --sandbox examples/marimo_notebook.py
 ```
 
-It also works in marimo's pyodide-powered online environment, see https://marimo.io/p/@davidar/mathics for an example.
+It also works in marimo's Pyodide-powered online environment, see https://marimo.io/p/@davidar/mathics for an example.
 
 ## Observable
 
