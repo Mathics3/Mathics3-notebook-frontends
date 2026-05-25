@@ -9,7 +9,7 @@ build-backend = "setuptools.build_meta"
 [project]
 description = "Jupyter, JupyterLite, marimo, Observable Notebook integration for Mathics3"
 dependencies = [
-    "Mathics3 >= 10.0.0",
+    "Mathics3 >= 10.0.1",
     "setuptools",
     # The following is needed because latest versions of "chardet" (6.0
     # and above) are not supported with some versions of "requests". I

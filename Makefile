@@ -13,7 +13,7 @@
 
 GIT2CL ?= admin-tools/git2cl
 
-#: Make distirbution: wheels and tarball
+#: Make distribution: wheels and tarball
 dist:
 	./admin-tools/make-dist.sh
 
