@@ -4,9 +4,7 @@ This library provides helper functions via a Jupyter Extension to integrate Math
 
 Currently, it supports Jupyter, JupyterLite, marimo, and Observable.
 
-For Jupyter, see also the [Jupyter Kernel](http://github.com/Mathics3/Mathics3-frontends-jupyter) GitHub repository.
-
-## Jupyter and JupyterLite
+For Jupyter, see also the GitHub repository [Jupyter Kernel](http://github.com/Mathics3/Mathics3-frontends-jupyter).
 
 ### Initial setup
 Set up your Python environment:
@@ -30,7 +28,7 @@ Next, start Jupyter Notebook:
 jupyter notebook # or make run-jupyter-notebook
 ```
 
-Alternatively start Jupyter Lab:
+Alternatively, start Jupyter Lab:
 
 ```bash
 jupyter lab # or make run-jupyter-lab
@@ -47,7 +45,7 @@ You should see a URL to connect to:
         http://127.0.0.1:8888/tree?token=1833fd2ac0fecd651c3f2d44931bd44c06673dd4701af3ca
 ```
 
-The URLS and file access will be different than the above. Also, remove any browser connections to the URLS, e.g., `localhost:8888` or `127.0.0.1:8888` or else you'll see errors.
+The URLS and file access will be different than the above. Also, remove any browser connections to the URLS, e.g., `localhost:8888` or `127.0.0.1:8888`, or else you'll see errors.
 
 
 Inside a standard Python3 Jupyter Kernel (ipykernel), run:
@@ -57,17 +55,17 @@ Inside a standard Python3 Jupyter Kernel (ipykernel), run:
 ```
 
 
-After this, entering code in a Notebook cell will be interpreted as Mathics3 input. ,
-Here is a [sample notebook](examples/jupyter-notebook.ipynb)
-that can be used with a local Jupyter installation.
+After this, entering code in a Notebook cell will be interpreted as Mathics3 input.
 
-On entering the notebook, you will have to rerun the first cell which should look like:
+Here is a [sample notebook](examples/jupyter-notebook.ipynb) that can be used with a local Jupyter installation.
+
+On entering the notebook, you will have to rerun the first cell, which should look like:
 ```
 %pip install -v Mathics3 Mathics3-notebook-frontends Mathics3-Module-networkx ipywidgets lxml pyocr scikit-image unidecode wordcloud
 %load_ext mathics3_kernel.frontend.jupyter
 ```
 
-The ">" button on the menu icons bar second from the top does this. Alternatively the ">>" button in that menu will rerun all cells.
+The ">" button on the menu icons bar second from the top does this. Alternatively, the ">>" button in that menu will rerun all cells.
 
 If you would like to run Mathics3 in a browser without doing any setup or installation, see [Mathics3 Live](https://mathics3.github.io/Mathics3-live/). The GitHub repository for this is at [https://github.com/Mathics3/Mathics3-live](https://github.com/Mathics3/Mathics3-live)
 
@@ -89,7 +87,7 @@ See the examples directory for a sample notebook:
 marimo edit --sandbox examples/marimo_notebook.py
 ```
 
-It also works in marimo's Pyodide-powered online environment, see https://marimo.io/p/@davidar/mathics for an example.
+It also works in marimo's Pyodide-powered online environment; see https://marimo.io/p/@davidar/mathics for an example.
 
 ## Observable
 
