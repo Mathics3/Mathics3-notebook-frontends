@@ -4,7 +4,7 @@ This library provides helper functions via a Jupyter Extension to integrate Math
 
 Currently, it supports Jupyter, JupyterLite, marimo, and Observable.
 
-For Jupyter, see also the GitHub repository [Jupyter Kernel](http://github.com/Mathics3/Mathics3-frontends-jupyter).
+For Jupyter, see also the GitHub repository [Jupyter Kernel](http://github.com/Mathics3/Mathics3-notebook-jupyter).
 
 ### Initial setup
 Set up your Python environment:
