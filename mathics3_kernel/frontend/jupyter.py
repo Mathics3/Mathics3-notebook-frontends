@@ -1,7 +1,10 @@
+import subprocess
+import sys
 from typing import List
 
 from IPython.core.interactiveshell import InteractiveShell
-from IPython.core.magic import Magics, line_cell_magic, magics_class
+from IPython.core.magic import (Magics, line_cell_magic, line_magic,
+                                magics_class)
 from IPython.display import HTML, Code, Javascript, Math, display
 from mathics.core.load_builtin import import_and_load_builtins
 from mathics.session import MathicsSession
@@ -43,12 +46,16 @@ class Mathics3Magic(Magics):
         import_and_load_builtins()
         self.formatter = JupyterFormatter()
         self.markdown = MarkdownMathics3Magic(shell, self.session)
+        self.pip = PipMagic()
 
     @line_cell_magic
     def mathics3(self, line, cell=""):
         if cell.startswith("%markdown_mathics3"):
             cell = cell[len("%markdown_mathics3") :]
             return self.markdown.markdown_mathics3(line, cell)
+        elif cell.startswith("%pip"):
+            cell = cell[len("%pip") :]
+            return self.pip.pip(line, cell)
         expr = self.session.evaluate(line + "\n" + cell)
         return self.formatter.format_output(self.session.evaluation, expr)
 
@@ -60,6 +67,7 @@ def transform_cell(lines: List[str]) -> List[str]:
 def load_ipython_extension(ipython: InteractiveShell):
     ipython.register_magics(Mathics3Magic)
     ipython.register_magics(MarkdownMathics3Magic)
+    ipython.register_magics(PipMagic)
     ipython.input_transformers_cleanup.append(transform_cell)
     display(
         Javascript(
@@ -72,3 +80,24 @@ def load_ipython_extension(ipython: InteractiveShell):
     """
         )
     )
+
+
+@magics_class
+class PipMagic(Magics):
+    """Magic command to run pip commands."""
+
+    @line_magic
+    def pip(self, line: str, args: str):
+        """
+        Run pip commands.
+
+        Usage:
+            %pip install package_name
+            %pip list
+            %pip show package_name
+        """
+        pip_command = f"{line} {args}"
+        try:
+            subprocess.check_call([sys.executable, "-m", "pip"] + pip_command.split())
+        except subprocess.CalledProcessError as e:
+            print(f"Error running pip command: {e}")

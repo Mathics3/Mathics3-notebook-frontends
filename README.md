@@ -8,6 +8,7 @@ For Jupyter, see also the [Jupyter Kernel](http://github.com/Mathics3/Mathics3-f
 
 ## Jupyter and JupyterLite
 
+### Initial setup
 Set up your Python environment:
 
 ```bash
@@ -18,13 +19,23 @@ source .venv/bin/activate
 or using `pyenv`:
 ```bash
 pyenv local 3.14
+
 ```
+
+### Running
 
 Next, start Jupyter Notebook:
 
 ```bash
 jupyter notebook # or make run-jupyter-notebook
 ```
+
+Alternatively start Jupyter Lab:
+
+```bash
+jupyter lab # or make run-jupyter-lab
+```
+
 
 You should see a URL to connect to:
 
@@ -45,11 +56,21 @@ Inside a standard Python3 Jupyter Kernel (ipykernel), run:
 %load_ext mathics3_kernel.frontend.jupyter
 ```
 
+
 After this, entering code in a Notebook cell will be interpreted as Mathics3 input. ,
 Here is a [sample notebook](examples/jupyter-notebook.ipynb)
 that can be used with a local Jupyter installation.
 
-For an already set up and no install version, running in a browser, see [Mathics3 Live](https://mathics3.github.io/Mathics3-live/). The GitHub repository for this is at [https://github.com/Mathics3/Mathics3-live](https://github.com/Mathics3/Mathics3-live)
+On entering the notebook, you will have to rerun the first cell which should look like:
+```
+%pip install -v Mathics3 Mathics3-notebook-frontends Mathics3-Module-networkx ipywidgets lxml pyocr scikit-image unidecode wordcloud
+%load_ext mathics3_kernel.frontend.jupyter
+```
+
+The ">" button on the menu icons bar second from the top does this. Alternatively the ">>" button in that menu will rerun all cells.
+
+If you would like to run Mathics3 in a browser without doing any setup or installation, see [Mathics3 Live](https://mathics3.github.io/Mathics3-live/). The GitHub repository for this is at [https://github.com/Mathics3/Mathics3-live](https://github.com/Mathics3/Mathics3-live)
+
 ## marimo
 
 ```py
