@@ -1,21 +1,13 @@
 from typing import Callable, Dict, Final
 
-from mathics.core.atoms import SymbolString
 from mathics.core.expression import BoxError, Expression
 from mathics.core.symbols import Symbol
-from mathics.core.systemsymbols import (
-    SymbolAborted,
-    SymbolCompiledFunction,
-    SymbolFailed,
-    SymbolFullForm,
-    SymbolGraphics,
-    SymbolGraphics3D,
-    SymbolInputForm,
-    SymbolMathMLForm,
-    SymbolOutputForm,
-    SymbolStandardForm,
-    SymbolTeXForm,
-)
+from mathics.core.systemsymbols import (SymbolAborted, SymbolCompiledFunction,
+                                        SymbolFailed, SymbolFullForm,
+                                        SymbolGraphics, SymbolGraphics3D,
+                                        SymbolInputForm, SymbolMathMLForm,
+                                        SymbolOutputForm, SymbolStandardForm,
+                                        SymbolString, SymbolTeXForm)
 from mathics.session import get_settings_value
 
 # Maps a Form to a kind of html format.
@@ -129,13 +121,13 @@ class Formatter:
         elif expr_head is SymbolGraphics3D:
             form_expr = Expression(SymbolStandardForm, expr)
             result = form_expr.format(evaluation, SymbolStandardForm)
-            return self.graphics3d(eval_boxes(result, result.boxes_to_json, evaluation))
+            return self.graphics3d(eval_boxes(result, result.to_json, evaluation))
         elif expr_head is SymbolGraphics:
             form_expr = Expression(SymbolStandardForm, expr)
             result = form_expr.format(evaluation, SymbolStandardForm)
-            return self.svg(eval_boxes(result, result.boxes_to_svg, evaluation))
+            return self.svg(eval_boxes(result, result.to_svg, evaluation))
         else:
             result = Expression(SymbolStandardForm, expr).format(
                 evaluation, SymbolTeXForm
             )
-            return self.math(eval_boxes(result, result.boxes_to_text, evaluation))
+            return self.math(eval_boxes(result, result.to_text, evaluation))

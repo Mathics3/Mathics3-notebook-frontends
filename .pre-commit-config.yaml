@@ -18,13 +18,13 @@ repos:
     hooks:
       - id: isort
         stages: [pre-commit]
-  - repo: https://github.com/psf/black
-    rev: 25.11.0
-    hooks:
-    - id: black
-      language_version: python3
-      exclude: 'mathics3_kernel/frontend/version.py'
-      stages: [pre-commit]
+  # - repo: https://github.com/psf/black
+  #   rev: 25.11.0
+  #   hooks:
+  #   - id: black
+  #     language_version: python3
+  #     exclude: 'mathics3_kernel/frontend/version.py'
+  #     stages: [pre-commit]
   - repo: https://github.com/python-jsonschema/check-jsonschema
     rev: 0.31.0  # Use the latest version
     hooks:
