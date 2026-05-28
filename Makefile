@@ -17,11 +17,15 @@ GIT2CL ?= admin-tools/git2cl
 dist:
 	./admin-tools/make-dist.sh
 
-#: Run a Jupyter notebook
+#: Run a Jupyter lab; the more modern IDE
+run-jupyter-lab:
+	jupyter lab
+
+#: Run a Jupyter notebook; the classic single-instance interface
 run-jupyter-notebook:
 	jupyter notebook
 
-#: Run a Jupyter console
+#: Run a Jupyter console; for debugging.
 run-jupyter-console:
 	jupyter console
 
