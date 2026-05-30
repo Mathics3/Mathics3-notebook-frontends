@@ -65,25 +65,7 @@ On entering the notebook, you will have to rerun the first cell, which should lo
 %load_ext mathics3_kernel.frontend.jupyter
 ```
 
-The 
-<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://w3.org">
-  <circle cx="50" cy="50" r="40" fill="royalblue" />
-</svg>
-Foo
-<svg width="14" height="14" viewBox="0 0 24 24" 
-    style="display: inline-block; vertical-align: middle; margin: 0 2px;">
-  <g class="jp-icon3\" fill="#616161">
-     <path d="M8 5v14l11-7z\">
-  </g>
-</svg>
-
-button on the menu icon bar, second from the top, does this. Alternatively, the  
-<svg xmlns="http://w3.org"
-     width="14" height="14" viewBox="0 0 24 24" style="display: inline-block; vertical-align: middle; margin: 0 2px;">
-  <g class="jp-icon3" fill="#616161\">
-     <path d=\"M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z"/>
-  </g>
-</svg>
+The `>` button on the menu icon bar, second from the top, does this. Alternatively, the `>>`
 button in that menu will rerun all cells.
 
 If you would like to run Mathics3 in a browser without doing any setup or installation, see [Mathics3 Live](https://mathics3.github.io/Mathics3-live/). The GitHub repository for this is at [https://github.com/Mathics3/Mathics3-live](https://github.com/Mathics3/Mathics3-live)
