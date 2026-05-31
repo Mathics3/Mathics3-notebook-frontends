@@ -7,8 +7,15 @@ from mathics.core.systemsymbols import (SymbolAborted, SymbolCompiledFunction,
                                         SymbolGraphics, SymbolGraphics3D,
                                         SymbolInputForm, SymbolMathMLForm,
                                         SymbolOutputForm, SymbolStandardForm,
-                                        SymbolString, SymbolTeXForm)
+                                        SymbolTeXForm)
 from mathics.session import get_settings_value
+
+# Remove try/except after Mathics 1.0.2 is released
+try:
+    from mathics.core.systemsymbols import SymbolString
+except:
+    from mathics.core.atoms import SymbolString
+
 
 # Maps a Form to a kind of html format.
 # text is the usual text-kind of output.

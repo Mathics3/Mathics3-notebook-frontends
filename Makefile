@@ -6,9 +6,10 @@
 
 .PHONY: all \
    ChangeLog-without-corrections \
+   console \
    dist \
-   run-jupyter-notebook \
-   run-jupyter-console \
+   lab \
+   notebook \
    rmChangeLog
 
 GIT2CL ?= admin-tools/git2cl
@@ -18,15 +19,15 @@ dist:
 	./admin-tools/make-dist.sh
 
 #: Run a Jupyter lab; the more modern IDE
-run-jupyter-lab:
+lab:
 	jupyter lab
 
 #: Run a Jupyter notebook; the classic single-instance interface
-run-jupyter-notebook:
+notebook:
 	jupyter notebook
 
 #: Run a Jupyter console; for debugging.
-run-jupyter-console:
+console:
 	jupyter console
 
 #: Remove ChangeLog
